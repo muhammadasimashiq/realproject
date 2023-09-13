@@ -35,7 +35,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
       - name: Install package dependencies
-        run: npm install
+        run: npm install --force
       - name: Deploy to EC2
         run: |
           # Run any build commands, if needed
