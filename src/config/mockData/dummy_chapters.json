@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Forces and Pressure",
+    "label": "Forces and Pressure",
+    "hasDropDown": true,
+    "children": [
+      {
+        "name": "snack-1",
+        "label": "Snack 1"
+      },
+      {
+        "name": "snack-2",
+        "label": "Snack 2"
+      },
+      {
+        "name": "snack-3",
+        "label": "Snack 3"
+      }
+    ]
+  },
+  {
+    "name": "Volume",
+    "label": "Volume",
+    "hasDropDown": true,
+    "children": [
+      {
+        "name": "snack-1",
+        "label": "Snack 1"
+      }
+    ]
+  },
+  {
+    "name": "Temperature",
+    "label": "Temperature",
+    "hasDropDown": true,
+    "children": [
+      {
+        "name": "snack-1",
+        "label": "Snack 1"
+      }
+    ]
+  },
+  {
+    "name": "Heat",
+    "label": "Heat"
+  },
+  {
+    "name": "Nuclear Physics",
+    "label": "Nuclear Physics"
+  },
+  {
+    "name": "Atomic Physics",
+    "label": "Atomic Physics"
+  },
+  {
+    "name": "Statistics",
+    "label": "Statistics"
+  }
+]

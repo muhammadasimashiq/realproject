@@ -1,0 +1,18 @@
+[
+  {
+    "value": "biology",
+    "label": "Biology"
+  },
+  {
+    "value": "chemistry",
+    "label": "Chemistry"
+  },
+  {
+    "value": "physics",
+    "label": "Physics"
+  },
+  {
+    "value": "mathematics",
+    "label": "Mathematics"
+  }
+]

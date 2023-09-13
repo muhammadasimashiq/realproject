@@ -1,0 +1,18 @@
+[
+  {
+    "value": "o-levels",
+    "label": "O levels"
+  },
+  {
+    "value": "a-levels",
+    "label": "A levels"
+  },
+  {
+    "value": "as-levels",
+    "label": "AS levels"
+  },
+  {
+    "value": "igcse",
+    "label": "IGCSE"
+  }
+]
