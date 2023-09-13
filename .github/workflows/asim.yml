@@ -32,12 +32,20 @@ jobs:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
+<<<<<<< HEAD
           echo "$secrets.REACT_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 13.113.164.70 >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }} # Use GitHub Secrets to store the private key securely
 
+=======
+          echo "${{ secrets.REACT_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 13.113.164.70 >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
+>>>>>>> a78b0e39182f9882b279b12b9fe7a6ad7bcef01a
       - name: Install package dependencies
         run: npm install
 
@@ -47,3 +55,7 @@ jobs:
           npm run build
           # Copy the built React app to your EC2 instance using SCP
           scp -r ./build/* ubuntu@13.113.164.70:/home/ubuntu/autodeploy
+<<<<<<< HEAD
+=======
+          
+>>>>>>> a78b0e39182f9882b279b12b9fe7a6ad7bcef01a
