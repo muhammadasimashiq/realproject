@@ -25,7 +25,7 @@ function App() {
     }
   }, []);
   const getPathHandler = (e) => {
-    if (e === "/login" || e === "/signup") {
+    if (e === "/logeeeeen" || e === "/signup") {
       return dispatch(modeActions.changeMode("light"));
     } else {
       return dispatch(modeActions.changeMode(localStorage.getItem("mode")));
