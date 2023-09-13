@@ -1,21 +1,18 @@
+---
 name: Continuous Deployment (CD)
 
 on:
   push:
     branches:
       - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout to the repository
         uses: actions/checkout@v2
-
       - name: Set up NodeJS environment
         uses: actions/setup-node@v2
-
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -23,39 +20,26 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{
+            hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
-<<<<<<< HEAD
-          echo "$secrets.REACT_KEY" > ~/.ssh/id_rsa
+          echo "${{ REACT_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 13.113.164.70 >> ~/.ssh/known_hosts
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }} # Use GitHub Secrets to store the private key securely
-
-=======
-          echo "${{ secrets.REACT_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 13.113.164.70 >> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
->>>>>>> a78b0e39182f9882b279b12b9fe7a6ad7bcef01a
+          SSH_PRIVATE_KEY: ${{ REACT_KEY }}
       - name: Install package dependencies
         run: npm install
-
       - name: Deploy to EC2
         run: |
           # Run any build commands, if needed
           npm run build
           # Copy the built React app to your EC2 instance using SCP
           scp -r ./build/* ubuntu@13.113.164.70:/home/ubuntu/autodeploy
-<<<<<<< HEAD
-=======
           
->>>>>>> a78b0e39182f9882b279b12b9fe7a6ad7bcef01a
