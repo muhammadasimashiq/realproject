@@ -36,6 +36,10 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
       - name: Install package dependencies
         run: npm install --force
+      - name: Run ESLint
+        run: npm run lint  # Adjust the script name as per your project setup
+      - name: Build
+        run: npm run build  # Adjust the build script according to your project
       - name: Deploy to EC2
         run: |
           # Run any build commands, if needed
