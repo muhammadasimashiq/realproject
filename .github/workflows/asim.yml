@@ -29,11 +29,11 @@ jobs:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ REACT_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.REACT_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 13.113.164.70 >> ~/.ssh/known_hosts
         env:
-          SSH_PRIVATE_KEY: ${{ REACT_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
       - name: Install package dependencies
         run: npm install
       - name: Deploy to EC2
