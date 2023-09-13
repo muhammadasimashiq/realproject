@@ -4,7 +4,7 @@ name: Continuous Deployment (CD)
 on:
   push:
     branches:
-      - devops
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-latest
