@@ -35,11 +35,12 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
       - name: Install package dependencies
-              export CI=false
+              
         run: npm install --force
       - name: Deploy to EC2
         run: |
           # Run any build commands, if needed
+          export CI=false
           npm run build
           # Copy the built React app to your EC2 instance using SCP
           scp -r ./build/* ubuntu@13.113.164.70:/home/ubuntu/autodeploy
