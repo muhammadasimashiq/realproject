@@ -1,18 +1,20 @@
----
 name: Continuous Deployment (CD)
 
 on:
   push:
     branches:
       - master
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout to the repository
         uses: actions/checkout@v2
+
       - name: Set up NodeJS environment
         uses: actions/setup-node@v2
+
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -20,12 +22,12 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{
-            hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
@@ -35,13 +37,14 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.REACT_KEY }}
 
-       - name: Set environment variables
+      - name: Set environment variables
         run: |
-          echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
-          echo "REACT_APP_RAYGUN_KEY=${{ secrets.REACT_APP_RAYGUN_KEY }}" >> .env
+          echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL_STAGE }}" >> .env
+          echo "REACT_APP_RAYGUN_KEY=${{ secrets.REACT_APP_RAYGUN_KEY_STAGE }}" >> .env
 
-      - name: Install package dependencies       
+      - name: Install package dependencies
         run: npm install --force
+
       - name: Deploy to EC2
         run: |
           # Run any build commands, if needed
