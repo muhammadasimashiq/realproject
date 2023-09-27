@@ -39,11 +39,17 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL_STAGE }}" >> .env
-          echo "REACT_APP_RAYGUN_KEY=${{ secrets.REACT_APP_RAYGUN_KEY_STAGE }}" >> .env
+          echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
+          echo "REACT_APP_RAYGUN_KEY=${{ secrets.REACT_APP_RAYGUN_KEY }}" >> .env
 
       - name: Install package dependencies
         run: npm install --force
+
+      - name: Build React App
+        run: npm run build
+
+      - name: Check .env file
+        run: cat .env
 
       - name: Deploy to EC2
         run: |
