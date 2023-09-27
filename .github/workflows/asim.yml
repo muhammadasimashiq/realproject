@@ -44,10 +44,7 @@ jobs:
 
       - name: Install package dependencies
         run: npm install --force
-
-      - name: Build React App
-        run: npm run build
-
+  
       - name: Check .env file
         run: cat .env
 
